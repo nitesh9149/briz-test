@@ -1,26 +1,132 @@
 @import "tailwindcss";
+@import "tw-animate-css";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Navbar height ------------------------- */
+  --navbar-height: 80px;
+  --light-black: rgba(0, 0, 0, 0.4);
+  --shadow--hard---small: 0px 0px 0px rgba(10, 9, 11, 0.05), 0px 6px 16px rgba(10, 9, 11, 0.08);
+
+  --Primary: #3e63ddff;
+  --Surface-Tint: #3a5cccff;
+  --On-Primary: #ffffffff;
+  --Primary-Container: #0144ff0f;
+  --On-Primary-Container: #3451b2ff;
+
+  --Secondary: #30a46cff;
+  --On-Secondary: #ffffffff;
+  --Secondary-Container: #02ba3c16;
+  --On-Secondary-Container: #18794eff;
+
+  --Tertiary: #f76300f7;
+  --On-Tertiary: #ffffffff;
+  --Tertiary-Container: #ff91012a;
+  --On-Tertiary-Container: #99543aff;
+
+  --Error: #e5484dff;
+  --On-Error: #ffffffff;
+  --Error-Container: #ff010110;
+  --On-Error-Container: #c62a2fff;
+
+  --Info: #3e63ddff;
+  --On-Info: #ffffffff;
+  --Info-Container: #0144ff0f;
+  --On-Info-Container: #3451b2ff;
+
+  --Surface: #1a023e15;
+  --Surface-Hover: #1a023e1f;
+  --On-Surface-Variant: #202020ff;
+  --on-Surface: #646464ff;
+
+  --Outline: #ebebebff;
+  --Outline-Variant: #1a023e15;
+
+  --Surface-Bright: #ffffffff;
+  --Surface-Dim: #f9f9f9ff;
+  --Surface-Container: #f1f1f1ff;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@theme {
+  --shadow-hard-small: var(--shadow--hard---small);
+
+  --color-primary: var(--Primary);
+  --color-surface-tint: var(--Surface-Tint);
+  --color-on-primary: var(--On-Primary);
+  --color-primary-container: var(--Primary-Container);
+  --color-on-primary-container: var(--On-Primary-Container);
+
+  --color-secondary: var(--Secondary);
+  --color-on-secondary: var(--On-Secondary);
+  --color-secondary-container: var(--Secondary-Container);
+  --color-on-secondary-container: var(--On-Secondary-Container);
+
+  --color-tertiary: var(--Tertiary);
+  --color-on-tertiary: var(--On-Tertiary);
+  --color-tertiary-container: var(--Tertiary-Container);
+  --color-on-tertiary-container: var(--On-Tertiary-Container);
+
+  --color-error: var(--Error);
+  --color-on-error: var(--On-Error);
+  --color-error-container: var(--Error-Container);
+  --color-on-error-container: var(--On-Error-Container);
+
+  --color-info: var(--Info);
+  --color-on-info: var(--On-Info);
+  --color-info-container: var(--Info-Container);
+  --color-on-info-container: var(--On-Info-Container);
+
+  --color-surface: var(--Surface);
+  --color-surface-hover: var(--Surface-Hover);
+  --color-on-surface-variant: var(--On-Surface-Variant);
+  --color-on-surface: var(--on-Surface);
+
+  --color-outline: var(--Outline);
+  --color-outline-variant: var(--Outline-Variant);
+
+  --color-surface-bright: var(--Surface-Bright);
+  --color-surface-dim: var(--Surface-Dim);
+  --color-surface-container: var(--Surface-Container);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  height: 6px;
+  width: 10px;
+}
+
+.scroll::-webkit-scrollbar {
+  width: 6px !important;
+}
+
+.scroll::-webkit-scrollbar:hover {
+  width: 8px !important;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 0px #f7f7f7;
+  border-radius: 10px;
+  background-color: #f7f7f7;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #c8c8c8;
+  height: 4px;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(141, 141, 141);
+}
+a {
+  color: var(--On-Surface-Variant);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--On-Surface-Variant);
 }
