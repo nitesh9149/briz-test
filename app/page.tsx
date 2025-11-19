@@ -90,7 +90,9 @@ export default function HomePage() {
                 width={64}
                 height={64}
               />
-              <HeadingH4 as="h3" className="text-error">Seller POV</HeadingH4>
+              <HeadingH4 as="h3" className="text-error">
+                Seller POV
+              </HeadingH4>
               <TextLarge className="text-on-surface">
                 Small stores lose visibility as shopping moves online.
               </TextLarge>
@@ -102,7 +104,9 @@ export default function HomePage() {
                 width={64}
                 height={64}
               />
-              <HeadingH4 as="h3" className="text-primary">Customer POV</HeadingH4>
+              <HeadingH4 as="h3" className="text-primary">
+                Customer POV
+              </HeadingH4>
               <TextLarge className="text-on-surface">
                 Buyers struggle to find nearby products they actually need.
               </TextLarge>
@@ -202,10 +206,11 @@ export default function HomePage() {
       <Container id="faqs" className="scroll-mt-30">
         <div className="space-y-14">
           <div className="space-y-6 text-center">
-            <HeadingH2>Questions? We&apos;ve got answers.</HeadingH2>
+            <HeadingH2>What is this app about?</HeadingH2>
             <TextLarge className="text-on-surface">
-              Here are some of the most common questions people ask before
-              getting started.
+              It’s a local marketplace that connects nearby customers and
+              sellers. Customers can request products, and sellers can offer
+              prices, chat, and complete orders — all in one app.
             </TextLarge>
           </div>
           <Accordion
@@ -213,46 +218,66 @@ export default function HomePage() {
             type="single"
             collapsible
           >
-            <AccordionItem value="item-1">
-              <AccordionTrigger>Question goes here</AccordionTrigger>
-              <AccordionContent>
-                Our products are crafted using high-quality, authentic
-                materials, including natural Rudraksha beads, energized
-                gemstones, sacred Shaligrams, and handcrafted malas. Every item
-                is designed with devotion and care.
-              </AccordionContent>
-            </AccordionItem>
-            <AccordionItem value="item-2">
-              <AccordionTrigger>Question goes here</AccordionTrigger>
-              <AccordionContent>
-                Our products are crafted using high-quality, authentic
-                materials, including natural Rudraksha beads, energized
-                gemstones, sacred Shaligrams, and handcrafted malas. Every item
-                is designed with devotion and care.
-              </AccordionContent>
-            </AccordionItem>
-            <AccordionItem value="item-3">
-              <AccordionTrigger>Question goes here</AccordionTrigger>
-              <AccordionContent>
-                Our products are crafted using high-quality, authentic
-                materials, including natural Rudraksha beads, energized
-                gemstones, sacred Shaligrams, and handcrafted malas. Every item
-                is designed with devotion and care.
-              </AccordionContent>
-            </AccordionItem>
-            <AccordionItem value="item-4">
-              <AccordionTrigger>Question goes here</AccordionTrigger>
-              <AccordionContent>
-                Our products are crafted using high-quality, authentic
-                materials, including natural Rudraksha beads, energized
-                gemstones, sacred Shaligrams, and handcrafted malas. Every item
-                is designed with devotion and care.
-              </AccordionContent>
-            </AccordionItem>
+            {faqs.map((faq) => (
+              <AccordionItem key={faq.idx} value={`item-${faq.idx}`}>
+                <AccordionTrigger>{faq.question}</AccordionTrigger>
+                <AccordionContent>{faq.answer}</AccordionContent>
+              </AccordionItem>
+            ))}
           </Accordion>
         </div>
       </Container>
-      
     </main>
   );
 }
+
+const faqs = [
+  {
+    idx: "1",
+    question: "What is this app about?",
+    answer:
+      "It’s a local marketplace that connects nearby customers and sellers. Customers can request products, and sellers can offer prices, chat, and complete orders — all in one app.",
+  },
+  {
+    idx: "2",
+    question: "Who can use this app?",
+    answer:
+      "Our products are crafted using high-quality, authentic materials, including natural Rudraksha beads, energized gemstones, sacred Shaligrams, and handcrafted malas. Every item is designed with devotion and care.",
+  },
+  {
+    idx: "3",
+    question: "Is the app free to use?",
+    answer:
+      "Our products are crafted using high-quality, authentic materials, including natural Rudraksha beads, energized gemstones, sacred Shaligrams, and handcrafted malas. Every item is designed with devotion and care.",
+  },
+  {
+    idx: "4",
+    question: "How do I get started as a seller?",
+    answer:
+      "Our products are crafted using high-quality, authentic materials, including natural Rudraksha beads, energized gemstones, sacred Shaligrams, and handcrafted malas. Every item is designed with devotion and care.",
+  },
+  {
+    idx: "5",
+    question: "How do I request a product as a customer?",
+    answer:
+      "Our products are crafted using high-quality, authentic materials, including natural Rudraksha beads, energized gemstones, sacred Shaligrams, and handcrafted malas. Every item is designed with devotion and care.",
+  },
+  {
+    idx: "6",
+    question: "Can I switch between seller and customer roles?",
+    answer:
+      "Our products are crafted using high-quality, authentic materials, including natural Rudraksha beads, energized gemstones, sacred Shaligrams, and handcrafted malas. Every item is designed with devotion and care.",
+  },
+  {
+    idx: "7",
+    question: "What happens if I don’t find the product I’m looking for?",
+    answer:
+      "Our products are crafted using high-quality, authentic materials, including natural Rudraksha beads, energized gemstones, sacred Shaligrams, and handcrafted malas. Every item is designed with devotion and care.",
+  },
+  {
+    idx: "8",
+    question: "How do I contact support?",
+    answer:
+      "Our products are crafted using high-quality, authentic materials, including natural Rudraksha beads, energized gemstones, sacred Shaligrams, and handcrafted malas. Every item is designed with devotion and care.",
+  },
+];

@@ -13,15 +13,18 @@ import Image from "next/image";
 import { useState } from "react";
 
 function SelectGlobalLanguage({ className }: { className?: string }) {
-  const [selectedLanguage, setSelectedLanguage] = useState(languages[0] as unknown as any );
+  const [selectedLanguage, setSelectedLanguage] = useState(
+    languages[0] as unknown as any
+  );
   return (
     <Select value={selectedLanguage} onValueChange={setSelectedLanguage}>
       <SelectTrigger
         className={cn(
-          "text-base font-semibold h-12 hover:bg-surface-container border border-transparent hover:border-outline",
+          "text-base font-semibold h-12 hover:bg-surface-container border border-transparent hover:border-outline justify-center",
           className
         )}
         aria-label="Language Select"
+        hideIcon
       >
         <SelectValue>
           <div className="flex gap-x-2 items-center">

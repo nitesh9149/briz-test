@@ -35,9 +35,11 @@ function Navbar() {
         )}
       >
         <Container className="flex items-center justify-between h-full">
-          <Link href="/">
-            <Image src="/logo.png" alt="Logo" width={108} height={36} />
-          </Link>
+          <div className="lg:w-[284px]">
+            <Link href="/" className="w-fit inline-block">
+              <Image src="/logo.png" alt="Logo" width={108} height={36} />
+            </Link>
+          </div>
           <ul className="hidden md:flex gap-8">
             <li>
               <Link href="/" className="font-medium">

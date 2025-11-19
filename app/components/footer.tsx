@@ -16,7 +16,7 @@ function Footer() {
       <section className="bg-surface-bright border-y border-outline">
         <Container>
           <div className="py-16 grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 gap-8 md:gap-16">
-            <div className="col-span-2">
+            <div className="col-span-2 md:max-w-[80%]">
               <Link href="/">
                 <Image src="/logo.png" alt="Logo" width={108} height={36} />
               </Link>
