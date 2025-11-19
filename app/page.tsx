@@ -126,7 +126,7 @@ export default function HomePage() {
           </div>
           <div className="space-y-[72px]">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
-              <figure className="relative w-full h-[620px] rounded-3xl overflow-hidden">
+              <figure className="relative w-full h-[480px] md:h-[620px] rounded-3xl overflow-hidden">
                 <Image
                   src="/step1.png"
                   alt="Search or Request a Product"
@@ -146,7 +146,7 @@ export default function HomePage() {
               </div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
-              <figure className="relative w-full h-[620px] rounded-3xl overflow-hidden">
+              <figure className="relative w-full h-[480px] md:h-[620px] rounded-3xl overflow-hidden">
                 <Image
                   src="/step2.png"
                   alt="Nearby Sellers Get Notified"
@@ -169,7 +169,7 @@ export default function HomePage() {
               </div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
-              <figure className="relative w-full h-[620px] rounded-3xl overflow-hidden">
+              <figure className="relative w-full h-[480px] md:h-[620px] rounded-3xl overflow-hidden">
                 <Image
                   src="/step3.png"
                   alt="Chat & Confirm the Order"
