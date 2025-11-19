@@ -83,7 +83,11 @@ function MobileTabMenu({ closeMenu }: { closeMenu: () => void }) {
           <SheetTitle className="hidden"></SheetTitle>
           <ul className="space-y-6">
             <li>
-              <Link onClick={closeMenu} href="/" className="font-medium">
+              <Link
+                onClick={closeMenu}
+                href="/"
+                className="font-medium w-full inline-block"
+              >
                 Home
               </Link>
             </li>
@@ -91,13 +95,17 @@ function MobileTabMenu({ closeMenu }: { closeMenu: () => void }) {
               <Link
                 onClick={closeMenu}
                 href="/#how-it-works"
-                className="font-medium"
+                className="font-medium w-full inline-block"
               >
                 How it Works
               </Link>
             </li>
             <li>
-              <Link onClick={closeMenu} href="/#faqs" className="font-medium">
+              <Link
+                onClick={closeMenu}
+                href="/#faqs"
+                className="font-medium w-full inline-block"
+              >
                 FAQs
               </Link>
             </li>
@@ -105,7 +113,7 @@ function MobileTabMenu({ closeMenu }: { closeMenu: () => void }) {
               <Link
                 onClick={closeMenu}
                 href="/contact-us"
-                className="font-medium"
+                className="font-medium w-full inline-block"
               >
                 Contact Us
               </Link>
