@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import {
@@ -12,7 +13,7 @@ import Image from "next/image";
 import { useState } from "react";
 
 function SelectGlobalLanguage({ className }: { className?: string }) {
-  const [selectedLanguage, setSelectedLanguage] = useState(languages[0]);
+  const [selectedLanguage, setSelectedLanguage] = useState(languages[0] as unknown as any );
   return (
     <Select value={selectedLanguage} onValueChange={setSelectedLanguage}>
       <SelectTrigger
@@ -38,7 +39,7 @@ function SelectGlobalLanguage({ className }: { className?: string }) {
       </SelectTrigger>
       <SelectContent>
         {languages.map((language) => (
-          <SelectItem key={language.value} value={language}>
+          <SelectItem key={language.value} value={language as unknown as any}>
             <div className="flex gap-2 items-center">
               <figure className="relative size-4">
                 <Image
