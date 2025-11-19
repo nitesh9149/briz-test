@@ -90,7 +90,7 @@ export default function HomePage() {
                 width={64}
                 height={64}
               />
-              <HeadingH4 className="text-error">Seller POV</HeadingH4>
+              <HeadingH4 as="h3" className="text-error">Seller POV</HeadingH4>
               <TextLarge className="text-on-surface">
                 Small stores lose visibility as shopping moves online.
               </TextLarge>
@@ -102,7 +102,7 @@ export default function HomePage() {
                 width={64}
                 height={64}
               />
-              <HeadingH4 className="text-primary">Customer POV</HeadingH4>
+              <HeadingH4 as="h3" className="text-primary">Customer POV</HeadingH4>
               <TextLarge className="text-on-surface">
                 Buyers struggle to find nearby products they actually need.
               </TextLarge>
@@ -138,7 +138,7 @@ export default function HomePage() {
                 <TextDefault className="text-primary font-bold">
                   Step 1
                 </TextDefault>
-                <HeadingH4>Search or Request a Product</HeadingH4>
+                <HeadingH4 as="h3">Search or Request a Product</HeadingH4>
                 <TextMedium className="text-on-surface">
                   Customers can search for what they need or post a quick
                   request if the item isn’t listed.
@@ -158,7 +158,7 @@ export default function HomePage() {
                 <TextDefault className="text-primary font-bold">
                   Step 2
                 </TextDefault>
-                <HeadingH4>Nearby Sellers Get Notified</HeadingH4>
+                <HeadingH4 as="h3">Nearby Sellers Get Notified</HeadingH4>
                 <TextMedium className="text-on-surface">
                   All nearby sellers receive the customer’s request instantly.
                 </TextMedium>
@@ -181,7 +181,7 @@ export default function HomePage() {
                 <TextDefault className="text-primary font-bold">
                   Step 3
                 </TextDefault>
-                <HeadingH4>Chat & Confirm the Order</HeadingH4>
+                <HeadingH4 as="h3">Chat & Confirm the Order</HeadingH4>
                 <TextMedium className="text-on-surface">
                   Once both sides agree, they can chat directly to confirm order
                   and get pickup details.

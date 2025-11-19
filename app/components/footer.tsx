@@ -26,27 +26,27 @@ function Footer() {
               </TextDefault>
               <ul className="flex items-center gap-6 mt-6">
                 <li>
-                  <a href="#">
+                  <a href="#" aria-label="Facebook">
                     <FacebookIcon />
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a href="#" aria-label="Instagram">
                     <InstagramIcon />
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a href="#" aria-label="TikTok">
                     <TiktokIcon />
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a href="#" aria-label="YouTube">
                     <YoutubeIcon />
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a href="#" aria-label="LinkedIn">
                     <LinkedinIcon />
                   </a>
                 </li>

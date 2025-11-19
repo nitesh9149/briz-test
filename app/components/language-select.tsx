@@ -21,6 +21,7 @@ function SelectGlobalLanguage({ className }: { className?: string }) {
           "text-base font-semibold h-12 hover:bg-surface-container border border-transparent hover:border-outline",
           className
         )}
+        aria-label="Language Select"
       >
         <SelectValue>
           <div className="flex gap-x-2 items-center">
