@@ -31,7 +31,7 @@ function TermsOfUseContent({ content }: { content: string }) {
   return (
     <div
       dangerouslySetInnerHTML={{ __html: content }}
-      className="[&>ul]:!bg-tertiary [&>ul]:ml-6 [&>p]:!bg-tertiary [&>h1]:!bg-tertiary [&>h2]:!bg-tertiary  [&>h3]:!bg-tertiary"
+      className="[&>ul]:!bg-tertiary [&>ul]:ml-6 [&>p]:!bg-tertiary [&>h1]:!bg-tertiary [&>h2]:!bg-tertiary  [&>h3]:!bg-tertiary min-h-[200px]"
     ></div>
   );
 }
