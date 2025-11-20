@@ -4,23 +4,22 @@ import { Metadata } from "next";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "Privacy Policy",
+    title: "Terms of Use",
   };
 }
-
-async function FlatPage() {
-  const flatpageDetail = {
-    content: "Flat page content goes here",
+function TermsOfUsePage() {
+  const termsOfUseDetail = {
+    content: "Terms of use content goes here",
   };
   return (
     <main className="scroll-mt-30">
       <Container>
         <section className="text-center py-16">
-          <HeadingH1>Privacy Policy</HeadingH1>
+          <HeadingH1>Terms of Use</HeadingH1>
         </section>
         <section>
           <div className="lg:max-w-4xl 2xl:max-w-5xl 2xl:w-[52rem] mx-auto pb-16">
-            <FlatPageContent content={flatpageDetail.content} />
+            <TermsOfUseContent content={termsOfUseDetail.content} />
           </div>
         </section>
       </Container>
@@ -28,7 +27,7 @@ async function FlatPage() {
   );
 }
 
-function FlatPageContent({ content }: { content: string }) {
+function TermsOfUseContent({ content }: { content: string }) {
   return (
     <div
       dangerouslySetInnerHTML={{ __html: content }}
@@ -37,4 +36,4 @@ function FlatPageContent({ content }: { content: string }) {
   );
 }
 
-export default FlatPage;
+export default TermsOfUsePage;

@@ -73,10 +73,10 @@ function Footer() {
               <TextDefault className="font-bold">Others</TextDefault>
               <ul className="space-y-6">
                 <li>
-                  <Link href="/pages/terms-of-use">Terms of Use</Link>
+                  <Link href="/terms-of-use">Terms of Use</Link>
                 </li>
                 <li>
-                  <Link href="/pages/privacy-policy">Privacy Policy</Link>
+                  <Link href="/privacy-policy">Privacy Policy</Link>
                 </li>
               </ul>
             </div>

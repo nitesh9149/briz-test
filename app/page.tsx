@@ -236,48 +236,48 @@ const faqs = [
     idx: "1",
     question: "What is this app about?",
     answer:
-      "It’s a local marketplace that connects nearby customers and sellers. Customers can request products, and sellers can offer prices, chat, and complete orders — all in one app.",
+      "It’s a local marketplace that connects nearby customers and sellers. Customers can request products, and sellers can offer prices, chat, and complete orders - all in one app.",
   },
   {
     idx: "2",
     question: "Who can use this app?",
     answer:
-      "Our products are crafted using high-quality, authentic materials, including natural Rudraksha beads, energized gemstones, sacred Shaligrams, and handcrafted malas. Every item is designed with devotion and care.",
+      "Anyone who wants to buy or sell products locally can use the app. Customers looking for the best price nearby Sellers/shops who want to receive more local orders You just need a phone, internet connection, and verified account.",
   },
   {
     idx: "3",
     question: "Is the app free to use?",
     answer:
-      "Our products are crafted using high-quality, authentic materials, including natural Rudraksha beads, energized gemstones, sacred Shaligrams, and handcrafted malas. Every item is designed with devotion and care.",
+      "Yes. The app is completely free for both customers and sellers. There are no signup fees, no commissions, and no hidden charges.",
   },
   {
     idx: "4",
     question: "How do I get started as a seller?",
     answer:
-      "Our products are crafted using high-quality, authentic materials, including natural Rudraksha beads, energized gemstones, sacred Shaligrams, and handcrafted malas. Every item is designed with devotion and care.",
+      "Sign up using your phone or Google account Switch to Seller Mode Complete your seller profile (shop name, address, products you sell) Turn on location and notification access (both are mandatory) Start receiving product requests from nearby customers",
   },
   {
     idx: "5",
     question: "How do I request a product as a customer?",
     answer:
-      "Our products are crafted using high-quality, authentic materials, including natural Rudraksha beads, energized gemstones, sacred Shaligrams, and handcrafted malas. Every item is designed with devotion and care.",
+      "Sign up and stay in Customer Mode Go to “Request a Product” Enter what you need, upload photos (optional), and set quantity Nearby sellers will send you offers Compare prices and accept the best offer",
   },
   {
     idx: "6",
     question: "Can I switch between seller and customer roles?",
     answer:
-      "Our products are crafted using high-quality, authentic materials, including natural Rudraksha beads, energized gemstones, sacred Shaligrams, and handcrafted malas. Every item is designed with devotion and care.",
+      "Yes. You can switch anytime. Just use the Seller/Customer toggle in the profile section. Your data, chats, and orders will remain separate for each role.",
   },
   {
     idx: "7",
     question: "What happens if I don’t find the product I’m looking for?",
     answer:
-      "Our products are crafted using high-quality, authentic materials, including natural Rudraksha beads, energized gemstones, sacred Shaligrams, and handcrafted malas. Every item is designed with devotion and care.",
+      "If no seller responds: Your request will remain active until it expires You can edit, extend, or repost the request You’ll get notified immediately if a seller sends an offer later This ensures you don’t miss any new responses.",
   },
   {
     idx: "8",
     question: "How do I contact support?",
     answer:
-      "Our products are crafted using high-quality, authentic materials, including natural Rudraksha beads, energized gemstones, sacred Shaligrams, and handcrafted malas. Every item is designed with devotion and care.",
+      "You can contact support through: In-app Help Center Or by emailing us at support@myshop.com (placeholder; replace with real email) Our team responds as soon as possible and is available for both customer and seller issues.",
   },
 ];
