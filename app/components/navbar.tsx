@@ -15,8 +15,14 @@ import {
 } from "./ui/sheet";
 import { HamburgerIcon, XIcon } from "./icons";
 import SelectGlobalLanguage from "./language-select";
+import type { Dictionary, Locale } from "@/app/[lang]/dictionaries";
 
-function Navbar() {
+type NavbarProps = {
+  dict: Dictionary;
+  lang: Locale;
+};
+
+function Navbar({ dict, lang }: NavbarProps) {
   const [scrolled, setScrolled] = useState(false);
   const [isMenuOpen, openMenu] = useState(false);
 
@@ -25,6 +31,12 @@ function Navbar() {
     window.addEventListener("scroll", handler);
     return () => window.removeEventListener("scroll", handler);
   }, []);
+
+  const t = dict.nav;
+  const home = `/${lang}`;
+  const howItWorks = `/${lang}#how-it-works`;
+  const faqs = `/${lang}#faqs`;
+  const contactUs = `/${lang}/contact-us`;
 
   return (
     <Sheet open={isMenuOpen} onOpenChange={openMenu}>
@@ -36,48 +48,66 @@ function Navbar() {
       >
         <Container className="flex items-center justify-between h-full">
           <div className="lg:w-[284px]">
-            <Link href="/" className="w-fit inline-block">
-              <Image src="/logo.png" alt="Logo" width={108} height={36} />
+            <Link href={home} className="w-fit inline-block">
+              <Image src="/logo.png" alt="Logo" width={64} height={28} />
             </Link>
           </div>
           <ul className="hidden md:flex gap-8">
             <li>
-              <Link href="/" className="font-medium">
-                Home
+              <Link href={home} className="font-medium">
+                {t.home}
               </Link>
             </li>
             <li>
-              <Link href="/#how-it-works" className="font-medium">
-                How it Works
+              <Link href={howItWorks} className="font-medium">
+                {t.howItWorks}
               </Link>
             </li>
             <li>
-              <Link href="/#faqs" className="font-medium">
-                FAQs
+              <Link href={faqs} className="font-medium">
+                {t.faqs}
               </Link>
             </li>
 
             <li>
-              <Link href="/contact-us" className="font-medium">
-                Contact Us
+              <Link href={contactUs} className="font-medium">
+                {t.contactUs}
               </Link>
             </li>
           </ul>
           <div className="hidden md:flex gap-3">
-            <SelectGlobalLanguage />
-            <Button intent="neutralAccent">Download App</Button>
+            <SelectGlobalLanguage dict={dict} lang={lang} />
+            <Button intent="neutralAccent">{t.downloadApp}</Button>
           </div>
           <SheetTrigger className="md:hidden">
             {isMenuOpen ? <XIcon /> : <HamburgerIcon />}
           </SheetTrigger>
         </Container>
       </nav>
-      <MobileTabMenu closeMenu={() => openMenu(false)} />
+      <MobileTabMenu
+        dict={dict}
+        lang={lang}
+        closeMenu={() => openMenu(false)}
+      />
     </Sheet>
   );
 }
 
-function MobileTabMenu({ closeMenu }: { closeMenu: () => void }) {
+function MobileTabMenu({
+  closeMenu,
+  dict,
+  lang,
+}: {
+  closeMenu: () => void;
+  dict: Dictionary;
+  lang: Locale;
+}) {
+  const t = dict.nav;
+  const home = `/${lang}`;
+  const howItWorks = `/${lang}#how-it-works`;
+  const faqs = `/${lang}#faqs`;
+  const contactUs = `/${lang}/contact-us`;
+
   return (
     <>
       <SheetContent side="top" className="top-20" hideClose>
@@ -87,43 +117,47 @@ function MobileTabMenu({ closeMenu }: { closeMenu: () => void }) {
             <li>
               <Link
                 onClick={closeMenu}
-                href="/"
+                href={home}
                 className="font-medium w-full inline-block"
               >
-                Home
+                {t.home}
               </Link>
             </li>
             <li>
               <Link
                 onClick={closeMenu}
-                href="/#how-it-works"
+                href={howItWorks}
                 className="font-medium w-full inline-block"
               >
-                How it Works
+                {t.howItWorks}
               </Link>
             </li>
             <li>
               <Link
                 onClick={closeMenu}
-                href="/#faqs"
+                href={faqs}
                 className="font-medium w-full inline-block"
               >
-                FAQs
+                {t.faqs}
               </Link>
             </li>
             <li>
               <Link
                 onClick={closeMenu}
-                href="/contact-us"
+                href={contactUs}
                 className="font-medium w-full inline-block"
               >
-                Contact Us
+                {t.contactUs}
               </Link>
             </li>
           </ul>
           <div className="flex flex-col gap-3">
-            <SelectGlobalLanguage className="bg-surface-container" />
-            <Button> Download App</Button>
+            <SelectGlobalLanguage
+              className="bg-surface-container"
+              dict={dict}
+              lang={lang}
+            />
+            <Button>{t.downloadApp}</Button>
           </div>
         </SheetHeader>
       </SheetContent>

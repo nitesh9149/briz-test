@@ -9,20 +9,29 @@ import {
   TiktokIcon,
   YoutubeIcon,
 } from "./icons";
+import type { Dictionary, Locale } from "@/app/[lang]/dictionaries";
 
-function Footer() {
+type FooterProps = {
+  dict: Dictionary;
+  lang: Locale;
+};
+
+function Footer({ dict, lang }: FooterProps) {
+  const t = dict.footer;
+  const nav = dict.nav;
+  const base = `/${lang}`;
+
   return (
     <>
       <section className="bg-surface-bright border-y border-outline">
         <Container>
           <div className="py-16 grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 gap-8 md:gap-16">
             <div className="col-span-2 md:max-w-[80%]">
-              <Link href="/">
-                <Image src="/logo.png" alt="Logo" width={108} height={36} />
+              <Link href={base}>
+                <Image src="/logo.png" alt="Logo" width={64} height={28} />
               </Link>
               <TextDefault className="text-on-surface mt-4">
-                A local marketplace connecting customers and sellers in real
-                time — request, chat, and shop instantly.
+                {t.description}
               </TextDefault>
               <ul className="flex items-center gap-6 mt-6">
                 <li>
@@ -53,38 +62,40 @@ function Footer() {
               </ul>
             </div>
             <div className="space-y-6">
-              <TextDefault className="font-bold">Quick Links</TextDefault>
+              <TextDefault className="font-bold">{t.quickLinks}</TextDefault>
               <ul className="space-y-6">
                 <li>
-                  <Link href="#">Home</Link>
+                  <Link href={base}>{nav.home}</Link>
                 </li>
                 <li>
-                  <Link href="/#how-it-works">How it Works</Link>
+                  <Link href={`${base}#how-it-works`}>{nav.howItWorks}</Link>
                 </li>
                 <li>
-                  <Link href="/#faqs">FAQs</Link>
+                  <Link href={`${base}#faqs`}>{nav.faqs}</Link>
                 </li>
                 <li>
-                  <Link href="/contact-us">Contact Us</Link>
+                  <Link href={`${base}/contact-us`}>{nav.contactUs}</Link>
                 </li>
               </ul>
             </div>
             <div className="space-y-6">
-              <TextDefault className="font-bold">Others</TextDefault>
+              <TextDefault className="font-bold">{t.others}</TextDefault>
               <ul className="space-y-6">
                 <li>
-                  <Link href="/terms-of-use">Terms of Use</Link>
+                  <Link href={`${base}/terms-of-use`}>{t.termsOfUse}</Link>
                 </li>
                 <li>
-                  <Link href="/privacy-policy">Privacy Policy</Link>
+                  <Link href={`${base}/privacy-policy`}>{t.privacyPolicy}</Link>
                 </li>
               </ul>
             </div>
             <div className="space-y-6">
-              <TextDefault className="font-bold">Download App Now</TextDefault>
+              <TextDefault className="font-bold">
+                {t.downloadAppNow}
+              </TextDefault>
               <ul className="space-y-6">
                 <li>
-                  <Link href="/">
+                  <Link href={base}>
                     <figure className="relative w-[163px] h-12">
                       <Image
                         src="/google-store.png"
@@ -96,7 +107,7 @@ function Footer() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/">
+                  <Link href={base}>
                     <figure className="relative w-[163px] h-12">
                       <Image
                         src="/apple-store.png"
@@ -114,9 +125,7 @@ function Footer() {
       </section>
       <div className="py-6 bg-surface-bright">
         <Container>
-          <TextDefault className="text-center">
-            © 2025 myShop. All rights reserved.
-          </TextDefault>
+          <TextDefault className="text-center">{t.copyright}</TextDefault>
         </Container>
       </div>
     </>

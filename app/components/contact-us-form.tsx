@@ -6,9 +6,13 @@ import { Label } from "./ui/label";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import { TextArea } from "./ui/textarea";
+import { sendContactMessage } from "../api";
+import toast, { Toaster } from "react-hot-toast";
+import type { Dictionary } from "@/app/[lang]/dictionaries";
 
-function ContactUsForm() {
+function ContactUsForm({ dict }: { dict: Dictionary }) {
   const [isPending, setIsPending] = useState(false);
+  const t = dict.contactUs.form;
 
   async function handleFormSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -19,78 +23,79 @@ function ContactUsForm() {
 
     const formData = new FormData(formEl);
 
-    console.log("formData", formData, formEl);
+    try {
+      const data = await sendContactMessage({
+        payload: {
+          full_name: formData.get("fullName") as string,
+          email: formData.get("email") as string,
+          phone_number: formData.get("phoneNumber") as string,
+          message: formData.get("message") as string,
+        },
+      });
 
-    // try {
-    //   const data = await sendContactMessage({
-    //     params: { language },
-    //     payload: {
-    //       full_name: formData.get("fullName") as string,
-    //       email: formData.get("email") as string,
-    //       phone_number: formData.get("phoneNumber") as string,
-    //       message: formData.get("message") as string,
-    //     },
-    //   });
+      console.log("data", data);
 
-    //   toast.success(data.detail, { position: "bottom-right" });
-    //   formEl.reset();
-    // } catch (error) {
-    // } finally {
-    //   setIsPending(false);
-    // }
+      toast.success(t.successMessage, { position: "bottom-right" });
+      formEl.reset();
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setIsPending(false);
+    }
   }
 
   return (
     <Fragment>
       <form onSubmit={handleFormSubmit} className="space-y-6">
         <FormGroup>
-          <Label htmlFor="fullName">Full Name</Label>
+          <Label htmlFor="fullName">{t.fullName}</Label>
           <Input
             type="text"
             required
             id="fullName"
             name="fullName"
-            placeholder="Enter your full name"
+            placeholder={t.fullNamePlaceholder}
           />
         </FormGroup>
 
         <FormGroup>
-          <Label htmlFor="email">Email</Label>
+          <Label htmlFor="email">{t.email}</Label>
           <Input
             required
             id="email"
             name="email"
             type="email"
-            placeholder="Enter your email address"
+            placeholder={t.emailPlaceholder}
           />
         </FormGroup>
 
         <FormGroup>
-          <Label htmlFor="phone">Phone</Label>
+          <Label htmlFor="phone">{t.phone}</Label>
           <Input
             required
             id="phone"
             type="text"
             maxLength={15}
             name="phoneNumber"
-            placeholder="Enter your phone number"
+            placeholder={t.phonePlaceholder}
           />
         </FormGroup>
 
         <FormGroup>
-          <Label htmlFor="message">Message</Label>
+          <Label htmlFor="message">{t.message}</Label>
           <TextArea
             required
             id="message"
             name="message"
-            placeholder="Enter your message here"
+            placeholder={t.messagePlaceholder}
           />
         </FormGroup>
 
         <Button disabled={isPending} type="submit">
-          Send Message
+          {t.sendMessage}
         </Button>
       </form>
+      <Toaster />
     </Fragment>
   );
 }
