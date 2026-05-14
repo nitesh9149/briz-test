@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import {
@@ -10,20 +9,62 @@ import {
 } from "./ui/select";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
-import { useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
+import { useTransition } from "react";
+import type { Dictionary, Locale } from "@/app/[lang]/i18n-config";
+import { locales } from "@/app/[lang]/i18n-config";
 
-function SelectGlobalLanguage({ className }: { className?: string }) {
-  const [selectedLanguage, setSelectedLanguage] = useState(
-    languages[0] as unknown as any
-  );
+type LanguageOption = {
+  label: string;
+  value: Locale;
+  flag: string;
+};
+
+type Props = {
+  className?: string;
+  dict: Dictionary;
+  lang: Locale;
+};
+
+function SelectGlobalLanguage({ className, dict, lang }: Props) {
+  const router = useRouter();
+  const pathname = usePathname();
+  const [isPending, startTransition] = useTransition();
+
+  const options: LanguageOption[] = [
+    { label: dict.languageSelect.english, value: "en", flag: "english" },
+    { label: dict.languageSelect.nepali, value: "ne", flag: "nepali" },
+  ];
+
+  const current = options.find((o) => o.value === lang) ?? options[0];
+
+  const handleChange = (next: string) => {
+    if (!locales.includes(next as Locale)) return;
+    if (next === lang) return;
+
+    // Replace the leading /<lang> segment in the pathname
+    const segments = pathname.split("/");
+    if (segments[1] && locales.includes(segments[1] as Locale)) {
+      segments[1] = next;
+    } else {
+      segments.splice(1, 0, next);
+    }
+    const nextPath = segments.join("/") || `/${next}`;
+
+    startTransition(() => {
+      router.replace(nextPath);
+      router.refresh();
+    });
+  };
+
   return (
-    <Select value={selectedLanguage} onValueChange={setSelectedLanguage}>
+    <Select value={current.value} onValueChange={handleChange} disabled={isPending}>
       <SelectTrigger
         className={cn(
           "text-base font-semibold h-12 hover:bg-surface-container border border-transparent hover:border-outline justify-center",
           className
         )}
-        aria-label="Language Select"
+        aria-label={dict.languageSelect.label}
         hideIcon
       >
         <SelectValue>
@@ -31,29 +72,28 @@ function SelectGlobalLanguage({ className }: { className?: string }) {
             <figure className="w-4 h-4 relative">
               <Image
                 fill
-                alt={`${selectedLanguage.label} Flag`}
-                src={`/flags/${selectedLanguage.value}.webp`}
+                alt={`${current.label} Flag`}
+                src={`/flags/${current.flag}.webp`}
                 className="object-contain"
               />
             </figure>
-
-            <span>{selectedLanguage.label}</span>
+            <span>{current.label}</span>
           </div>
         </SelectValue>
       </SelectTrigger>
       <SelectContent>
-        {languages.map((language) => (
-          <SelectItem key={language.value} value={language as unknown as any}>
+        {options.map((option) => (
+          <SelectItem key={option.value} value={option.value}>
             <div className="flex gap-2 items-center">
               <figure className="relative size-4">
                 <Image
                   fill
-                  alt={`Flag of ${language.label}`}
-                  src={`/flags/${language.value}.webp`}
+                  alt={`Flag of ${option.label}`}
+                  src={`/flags/${option.flag}.webp`}
                   className="object-contain"
                 />
               </figure>
-              {language.label}
+              {option.label}
             </div>
           </SelectItem>
         ))}
@@ -61,11 +101,5 @@ function SelectGlobalLanguage({ className }: { className?: string }) {
     </Select>
   );
 }
-const languages = [
-  { label: "English", value: "english" },
-  { label: "Nepali", value: "nepali" },
-  { label: "Bangla", value: "bangla" },
-  { label: "Hindi", value: "hindi" },
-];
 
 export default SelectGlobalLanguage;

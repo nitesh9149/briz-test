@@ -2,43 +2,45 @@ import Link from "next/link";
 import Container from "./container";
 import { HeadingH2, TextDefault, TextMedium } from "./ui/typography";
 import Image from "next/image";
+import type { Dictionary } from "@/app/[lang]/dictionaries";
 
-function StartConnectingSection() {
+type Props = {
+  dict: Dictionary;
+};
+
+function StartConnectingSection({ dict }: Props) {
+  const t = dict.startConnecting;
+
   return (
     <Container>
       <div className="rounded-4xl bg-[linear-gradient(108deg,#2F7FEF_3.32%,#3A5CCC_101.69%)] p-4 md:py-24 md:px-[76px]">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="space-y-8 order-2 md:order-0">
-            <HeadingH2 className="text-on-primary">
-              Start connecting today.
-            </HeadingH2>
-            <TextMedium className="text-on-primary">
-              It takes less than 2 minutes to get started — download now and
-              grow your local network.
-            </TextMedium>
+            <HeadingH2 className="text-on-primary">{t.title}</HeadingH2>
+            <TextMedium className="text-on-primary">{t.description}</TextMedium>
             <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <li className="flex gap-4">
                 <CheckBadgeIcon />
                 <TextDefault className="text-on-primary">
-                  Instant Connections
+                  {t.instantConnections}
                 </TextDefault>
               </li>
               <li className="flex gap-4">
                 <CheckBadgeIcon />
                 <TextDefault className="text-on-primary">
-                  Real Conversations
+                  {t.realConversations}
                 </TextDefault>
               </li>
               <li className="flex gap-4">
                 <CheckBadgeIcon />
                 <TextDefault className="text-on-primary">
-                  Faster Deals
+                  {t.fasterDeals}
                 </TextDefault>
               </li>
               <li className="flex gap-4">
                 <CheckBadgeIcon />
                 <TextDefault className="text-on-primary">
-                  Location-Based Matching
+                  {t.locationBasedMatching}
                 </TextDefault>
               </li>
             </ul>
