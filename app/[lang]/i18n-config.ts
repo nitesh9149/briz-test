@@ -1,4 +1,6 @@
-export const locales = ["en", "ne"] as const;
+// Only English is enabled for now. Add "ne" back here to re-enable Nepali — the
+// ne.json dictionary and the language switcher (in git history) are kept for that.
+export const locales = ["en"] as const;
 export type Locale = (typeof locales)[number];
 export const defaultLocale: Locale = "en";
 

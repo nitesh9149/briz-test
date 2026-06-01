@@ -14,8 +14,10 @@ import {
   SheetTrigger,
 } from "./ui/sheet";
 import { HamburgerIcon, XIcon } from "./icons";
-import SelectGlobalLanguage from "./language-select";
+// import SelectGlobalLanguage from "./language-select"; // disabled: English-only for now
 import type { Dictionary, Locale } from "@/app/[lang]/dictionaries";
+import { Dialog, DialogTrigger } from "./ui/dialog";
+import ScanQrToDownloadDialogContent from "./scan-qr-dialog-content";
 
 type NavbarProps = {
   dict: Dictionary;
@@ -43,7 +45,7 @@ function Navbar({ dict, lang }: NavbarProps) {
       <nav
         className={cn(
           "sticky top-0 left-0 h-[var(--navbar-height)] bg-surface-dim z-[99]",
-          scrolled && "border-b border-outline"
+          scrolled && "border-b border-outline",
         )}
       >
         <Container className="flex items-center justify-between h-full">
@@ -76,8 +78,13 @@ function Navbar({ dict, lang }: NavbarProps) {
             </li>
           </ul>
           <div className="hidden md:flex gap-3">
-            <SelectGlobalLanguage dict={dict} lang={lang} />
-            <Button intent="neutralAccent">{t.downloadApp}</Button>
+            {/* <SelectGlobalLanguage dict={dict} lang={lang} /> */}
+            <Dialog>
+              <DialogTrigger asChild>
+                <Button intent="neutralAccent">{t.downloadApp}</Button>
+              </DialogTrigger>
+              <ScanQrToDownloadDialogContent dict={dict} />
+            </Dialog>
           </div>
           <SheetTrigger className="md:hidden">
             {isMenuOpen ? <XIcon /> : <HamburgerIcon />}
@@ -107,6 +114,8 @@ function MobileTabMenu({
   const howItWorks = `/${lang}#how-it-works`;
   const faqs = `/${lang}#faqs`;
   const contactUs = `/${lang}/contact-us`;
+
+  const downloadAppLink = dict.downloadLinks;
 
   return (
     <>
@@ -152,12 +161,18 @@ function MobileTabMenu({
             </li>
           </ul>
           <div className="flex flex-col gap-3">
-            <SelectGlobalLanguage
+            {/* <SelectGlobalLanguage
               className="bg-surface-container"
               dict={dict}
               lang={lang}
-            />
-            <Button>{t.downloadApp}</Button>
+            /> */}
+            <Link
+              href={downloadAppLink.downloadLink}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button className="w-full">{t.downloadApp}</Button>
+            </Link>
           </div>
         </SheetHeader>
       </SheetContent>

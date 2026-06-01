@@ -7,6 +7,7 @@ import {
   PhoneIconFill,
 } from "@/app/components/icons";
 import StartConnectingSection from "@/app/components/start-connecting-section";
+import ScrollToTop from "@/app/components/scroll-to-top";
 import {
   HeadingH1,
   HeadingH5,
@@ -27,9 +28,30 @@ export async function generateMetadata({
   params: Promise<{ lang: string }>;
 }): Promise<Metadata> {
   const { lang } = await params;
-  if (!hasLocale(lang)) return { title: "Contact Us" };
+  if (!hasLocale(lang)) return { title: "Contact us" };
   const dict = await getDictionary(lang as Locale);
-  return { title: dict.contactUs.metaTitle };
+  const { metaTitle, metaDescription } = dict.contactUs;
+  const url = `/${lang}/contact-us`;
+
+  return {
+    title: metaTitle,
+    description: metaDescription,
+    alternates: { canonical: url },
+    openGraph: {
+      title: `${metaTitle} | Briz`,
+      description: metaDescription,
+      url,
+      siteName: "Briz",
+      type: "website",
+      images: [{ url: "/video-thumbnail.png", alt: "Briz" }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${metaTitle} | Briz`,
+      description: metaDescription,
+      images: ["/video-thumbnail.png"],
+    },
+  };
 }
 
 export default async function ContactUsPage({
@@ -44,11 +66,13 @@ export default async function ContactUsPage({
 
   return (
     <Container>
+      <ScrollToTop />
       <div className="text-center py-16 space-y-6">
-        <HeadingH1>
+        <HeadingH1 className="text-primary">
           {t.headingPart1}{" "}
-          <span className="text-primary">{t.headingHighlight}</span>
-          {t.headingSuffix}
+          <span className="text-on-surface-variant">
+            {t.headingHighlight} {t.headingSuffix}
+          </span>
         </HeadingH1>
         <TextLarge className="text-on-surface">{t.description}</TextLarge>
       </div>
@@ -62,9 +86,9 @@ export default async function ContactUsPage({
               </TextSmall>
               <a
                 className="text-on-surface-variant font-bold text-lg"
-                href="tel:+"
+                href="tel:9761812176"
               >
-                +977-9813496809, 01-4115272
+                +977 9761812176
               </a>
             </div>
           </li>
@@ -76,9 +100,9 @@ export default async function ContactUsPage({
               </TextSmall>
               <a
                 className="text-on-surface-variant font-bold text-lg"
-                href="mailto:support@bytecommerce.com"
+                href="mailto:contact@brizmarket.com"
               >
-                support@bytecommerce.com
+                contact@brizmarket.com
               </a>
             </div>
           </li>
@@ -86,9 +110,9 @@ export default async function ContactUsPage({
             <MapIconFill />
             <div className="space-y-1">
               <TextSmall className="text-on-surface">
-                {t.whatsappLiveChat}
+                {t.addressTitle}
               </TextSmall>
-              <TextMedium className="font-bold">{t.address}</TextMedium>
+              <TextMedium className="font-bold">Bagdol, Lalitpur</TextMedium>
             </div>
           </li>
         </ul>

@@ -9,7 +9,8 @@ type Props = {
 };
 
 function StartConnectingSection({ dict }: Props) {
-  const t = dict.startConnecting;
+  const t = dict.productShowcaseCard;
+  const downloadAppLinks = dict.downloadLinks;
 
   return (
     <Container>
@@ -22,30 +23,30 @@ function StartConnectingSection({ dict }: Props) {
               <li className="flex gap-4">
                 <CheckBadgeIcon />
                 <TextDefault className="text-on-primary">
-                  {t.instantConnections}
+                  {t.cardlist1}
                 </TextDefault>
               </li>
               <li className="flex gap-4">
                 <CheckBadgeIcon />
                 <TextDefault className="text-on-primary">
-                  {t.realConversations}
+                  {t.cardlist2}
                 </TextDefault>
               </li>
               <li className="flex gap-4">
                 <CheckBadgeIcon />
                 <TextDefault className="text-on-primary">
-                  {t.fasterDeals}
+                  {t.cardlist3}
                 </TextDefault>
               </li>
               <li className="flex gap-4">
                 <CheckBadgeIcon />
                 <TextDefault className="text-on-primary">
-                  {t.locationBasedMatching}
+                  {t.cardlist4}
                 </TextDefault>
               </li>
             </ul>
             <div className="flex items-center gap-4 mt-12">
-              <Link href="/">
+              <Link href={downloadAppLinks.googlePlay}>
                 <Image
                   src="/google-store.png"
                   alt="google store"
@@ -53,7 +54,7 @@ function StartConnectingSection({ dict }: Props) {
                   height={50}
                 />
               </Link>
-              <Link href="/">
+              <Link href={downloadAppLinks.appStore}>
                 <Image
                   src="/apple-store.png"
                   alt="google store"
@@ -66,7 +67,7 @@ function StartConnectingSection({ dict }: Props) {
           <div className="relative md:-mb-24 w-full">
             <Image
               src="/myshop-app-view.png"
-              alt="myshop app view"
+              alt="Briz app view"
               width={600}
               height={520}
               className="md:absolute bottom-0 right-0 aspect-[15/13] -mr-[76px] xl:w-[530px]"

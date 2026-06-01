@@ -28,9 +28,6 @@ async function PrivacyPolicyPage({
   if (!hasLocale(lang)) notFound();
   const dict = await getDictionary(lang as Locale);
 
-  const privacyPolicyDetail = {
-    content: "Privacy policy content goes here",
-  };
   return (
     <main className="scroll-mt-30">
       <Container>
@@ -39,7 +36,7 @@ async function PrivacyPolicyPage({
         </section>
         <section>
           <div className="lg:max-w-4xl 2xl:max-w-5xl 2xl:w-208 mx-auto pb-16">
-            <PrivacyPolicyContent content={privacyPolicyDetail.content} />
+            <PrivacyPolicyContent content={dict.privacyPolicy.content} />
           </div>
         </section>
       </Container>
@@ -51,7 +48,7 @@ function PrivacyPolicyContent({ content }: { content: string }) {
   return (
     <div
       dangerouslySetInnerHTML={{ __html: content }}
-      className="[&>ul]:!bg-tertiary [&>ul]:ml-6 [&>p]:!bg-tertiary [&>h1]:!bg-tertiary [&>h2]:!bg-tertiary  [&>h3]:!bg-tertiary min-h-[200px]"
+      className="min-h-[200px] [&_h2]:text-xl [&_h2]:font-semibold [&_h2]:mt-8 [&_h2]:mb-3 [&_h3]:text-lg [&_h3]:font-medium [&_h3]:mt-6 [&_h3]:mb-2 [&_p]:mb-4 [&_p]:leading-relaxed [&_ul]:list-disc [&_ul]:ml-6 [&_ul]:mb-4 [&_li]:mb-2"
     ></div>
   );
 }

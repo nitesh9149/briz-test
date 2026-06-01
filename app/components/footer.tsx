@@ -21,6 +21,8 @@ function Footer({ dict, lang }: FooterProps) {
   const nav = dict.nav;
   const base = `/${lang}`;
 
+  const downloadAppLinks = dict.downloadLinks;
+
   return (
     <>
       <section className="bg-surface-bright border-y border-outline">
@@ -35,30 +37,30 @@ function Footer({ dict, lang }: FooterProps) {
               </TextDefault>
               <ul className="flex items-center gap-6 mt-6">
                 <li>
-                  <a href="#" aria-label="Facebook">
+                  <a href={t.facebookLink} aria-label="Facebook">
                     <FacebookIcon />
                   </a>
                 </li>
                 <li>
-                  <a href="#" aria-label="Instagram">
+                  <a href={t.instagramLink} aria-label="Instagram">
                     <InstagramIcon />
                   </a>
                 </li>
                 <li>
-                  <a href="#" aria-label="TikTok">
+                  <a href={t.tiktokLink} aria-label="TikTok">
                     <TiktokIcon />
                   </a>
                 </li>
                 <li>
-                  <a href="#" aria-label="YouTube">
+                  <a href={t.youtubeLink} aria-label="YouTube">
                     <YoutubeIcon />
                   </a>
                 </li>
-                <li>
-                  <a href="#" aria-label="LinkedIn">
+                {/* <li>
+                  <a href={t.linkedinLink} aria-label="LinkedIn">
                     <LinkedinIcon />
                   </a>
-                </li>
+                </li> */}
               </ul>
             </div>
             <div className="space-y-6">
@@ -82,10 +84,10 @@ function Footer({ dict, lang }: FooterProps) {
               <TextDefault className="font-bold">{t.others}</TextDefault>
               <ul className="space-y-6">
                 <li>
-                  <Link href={`${base}/terms-of-use`}>{t.termsOfUse}</Link>
+                  <Link href={`${base}/privacy-policy`}>{t.privacyPolicy}</Link>
                 </li>
                 <li>
-                  <Link href={`${base}/privacy-policy`}>{t.privacyPolicy}</Link>
+                  <Link href={`${base}/terms-of-use`}>{t.termsOfUse}</Link>
                 </li>
               </ul>
             </div>
@@ -95,7 +97,7 @@ function Footer({ dict, lang }: FooterProps) {
               </TextDefault>
               <ul className="space-y-6">
                 <li>
-                  <Link href={base}>
+                  <Link href={downloadAppLinks.googlePlay}>
                     <figure className="relative w-[163px] h-12">
                       <Image
                         src="/google-store.png"
@@ -107,7 +109,7 @@ function Footer({ dict, lang }: FooterProps) {
                   </Link>
                 </li>
                 <li>
-                  <Link href={base}>
+                  <Link href={downloadAppLinks.appStore}>
                     <figure className="relative w-[163px] h-12">
                       <Image
                         src="/apple-store.png"
@@ -125,7 +127,9 @@ function Footer({ dict, lang }: FooterProps) {
       </section>
       <div className="py-6 bg-surface-bright">
         <Container>
-          <TextDefault className="text-center">{t.copyright}</TextDefault>
+          <TextDefault className="text-center">
+            {t.copyright.replace("{year}", new Date().getFullYear().toString())}
+          </TextDefault>
         </Container>
       </div>
     </>

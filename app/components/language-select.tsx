@@ -1,3 +1,8 @@
+// Language switcher — temporarily disabled (only English is enabled for now).
+// To re-enable: uncomment this file, add "ne" back in i18n-config.ts and
+// dictionaries.ts, and uncomment the usages in navbar.tsx.
+
+/*
 "use client";
 
 import {
@@ -103,3 +108,4 @@ function SelectGlobalLanguage({ className, dict, lang }: Props) {
 }
 
 export default SelectGlobalLanguage;
+*/
