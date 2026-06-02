@@ -48,13 +48,13 @@ function Navbar({ dict, lang }: NavbarProps) {
           scrolled && "border-b border-outline",
         )}
       >
-        <Container className="flex items-center justify-between h-full">
+        <Container className="relative flex items-center justify-between h-full">
           <div className="lg:w-fit">
             <Link href={home} className="w-fit inline-block">
               <Image src="/logo.png" alt="Logo" width={64} height={28} />
             </Link>
           </div>
-          <ul className="hidden md:flex gap-8">
+          <ul className="hidden md:flex gap-8 absolute left-1/2 -translate-x-1/2">
             <li>
               <Link href={home} className="font-medium">
                 {t.home}
