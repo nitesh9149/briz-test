@@ -49,7 +49,7 @@ function Navbar({ dict, lang }: NavbarProps) {
         )}
       >
         <Container className="flex items-center justify-between h-full">
-          <div className="lg:w-[284px]">
+          <div className="lg:w-fit">
             <Link href={home} className="w-fit inline-block">
               <Image src="/logo.png" alt="Logo" width={64} height={28} />
             </Link>
