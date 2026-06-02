@@ -7,7 +7,6 @@ import {
   PhoneIconFill,
 } from "@/app/components/icons";
 import StartConnectingSection from "@/app/components/start-connecting-section";
-import ScrollToTop from "@/app/components/scroll-to-top";
 import {
   HeadingH1,
   HeadingH5,
@@ -66,7 +65,6 @@ export default async function ContactUsPage({
 
   return (
     <Container>
-      <ScrollToTop />
       <div className="text-center py-16 space-y-6">
         <HeadingH1 className="text-primary">
           {t.headingPart1}{" "}
