@@ -88,15 +88,9 @@
   --color-surface-container: var(--Surface-Container);
 }
 
-@media (max-width: 1024px) {
-  html {
-    font-size: 86%;
-  }
-}
-
 @media (max-width: 640px) {
   html {
-    font-size: 78%;
+    font-size: 80%;
   }
 }
 

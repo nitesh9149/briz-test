@@ -77,7 +77,7 @@ export default async function HomePage({
       <Container>
         <div className="flex flex-col pt-8 md:pt-20 max-w-[864px] mx-auto items-center justify-center gap-4 md:gap-8 text-center">
           {/* <HeadingH6>{dict.hero.tagline}</HeadingH6> */}
-          <TextMedium className="text-on-surface flex items-center gap-3 pt-2">
+          <TextMedium className="text-on-surface flex items-center gap-3">
             {dict.hero.tagline}{" "}
             <Link
               href="https://www.karobarapp.com"
@@ -132,7 +132,7 @@ export default async function HomePage({
       {/* Video Section */}
       <Container>
         <div className="relative w-full">
-          <figure className="relative aspect-55/31 w-full overflow-hidden rounded-3xl border-10 border-icon-hover">
+          <figure className="relative aspect-55/31 w-full overflow-hidden rounded-3xl border-4 md:border-10 border-icon-hover">
             <Image
               src="/video-thumbnail.png"
               alt="Video Thumbnail"
