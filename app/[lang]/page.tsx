@@ -1,11 +1,9 @@
 import Image from "next/image";
 import Container from "../components/container";
-import { Button } from "../components/ui/button";
 import {
   HeadingH1,
   HeadingH2,
   HeadingH4,
-  HeadingH6,
   TextDefault,
   TextLarge,
   TextMedium,
@@ -17,8 +15,6 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "../components/ui/accordion";
-import ScanQrToDownloadDialogContent from "../components/scan-qr-dialog-content";
-import { Dialog, DialogTrigger } from "../components/ui/dialog";
 import { getDictionary, hasLocale, type Locale } from "./dictionaries";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
@@ -81,7 +77,23 @@ export default async function HomePage({
       <Container>
         <div className="flex flex-col pt-8 md:pt-20 max-w-[864px] mx-auto items-center justify-center gap-4 md:gap-8 text-center">
           {/* <HeadingH6>{dict.hero.tagline}</HeadingH6> */}
-          <HeadingH1 className="pt-10">
+          <TextMedium className="text-on-surface flex items-center gap-3 pt-2">
+            {dict.hero.tagline}{" "}
+            <Link
+              href="https://www.karobarapp.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Image
+                src="/karobar.png"
+                alt="Karobar Logo"
+                width={103}
+                height={24}
+                className="inline-block"
+              />
+            </Link>
+          </TextMedium>
+          <HeadingH1 className="pt-4 md:pt-1">
             {dict.hero.titlePart1}{" "}
             <span className="inline-block bg-primary text-surface-dim px-2 py-0.5 rounded-lg -rotate-[3deg]">
               <span className="inline-block rotate-[3deg]">
@@ -94,45 +106,43 @@ export default async function HomePage({
             {dict.hero.description}
           </TextLarge>
 
-          <Link
-            href={downloadAppLink.downloadLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block md:hidden"
-          >
-            <Button>{dict.hero.downloadApp}</Button>
-          </Link>
-          <Dialog>
-            <DialogTrigger asChild>
-              <Button className="hidden md:inline-block">
-                {dict.hero.downloadApp}
-              </Button>
-            </DialogTrigger>
-            <ScanQrToDownloadDialogContent dict={dict} />
-          </Dialog>
+          <div className="flex items-center justify-center md:justify-start gap-4 mt-4">
+            <Link href={downloadAppLink.googlePlay}>
+              <Image
+                src="/google-store.png"
+                alt="google store"
+                width={169}
+                height={50}
+                className="h-12 w-auto md:h-[50px]"
+              />
+            </Link>
+            <Link href={downloadAppLink.appStore}>
+              <Image
+                src="/apple-store.png"
+                alt="google store"
+                width={149}
+                height={50}
+                className="h-12 w-auto md:h-[50px]"
+              />
+            </Link>
+          </div>
         </div>
       </Container>
 
       {/* Video Section */}
       <Container>
-        <div className="aspect-[55/31] w-full border-[10px] border-icon-hover rounded-3xl relative">
-          <figure className="relative w-full h-full ">
+        <div className="relative w-full">
+          <figure className="relative aspect-55/31 w-full overflow-hidden rounded-3xl border-10 border-icon-hover">
             <Image
               src="/video-thumbnail.png"
               alt="Video Thumbnail"
               fill
-              className="object-cover rounded-3xl"
-            />
-            <Image
-              className="absolute z-10 top-0 left-0 right-0 bottom-0 m-auto cursor-pointer"
-              src="/play-button.png"
-              width={80}
-              height={80}
-              alt="play button"
+              unoptimized
+              className="object-cover"
             />
           </figure>
           <Image
-            className="absolute z-10 -top-[35px] md:-top-[105px] -right-[32px] md:-right-[91px] w-[40px] md:w-auto"
+            className="absolute z-10 -top-[27px] md:-top-[80px] -right-[25px] md:-right-[70px] w-[40px] md:w-auto"
             src="/three-yellow-line.png"
             width={68}
             height={114}

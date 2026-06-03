@@ -35,7 +35,7 @@ async function TermsOfUsePage({
           <HeadingH1>{dict.termsOfUse.title}</HeadingH1>
         </section>
         <section>
-          <div className="lg:max-w-4xl 2xl:max-w-5xl 2xl:w-[52rem] mx-auto pb-16">
+          <div className="lg:max-w-4xl 2xl:max-w-5xl 2xl:w-208 mx-auto pb-16">
             <TermsOfUseContent content={dict.termsOfUse.content} />
           </div>
         </section>

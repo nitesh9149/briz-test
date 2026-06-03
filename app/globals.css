@@ -94,6 +94,12 @@
   }
 }
 
+@media (max-width: 640px) {
+  html {
+    font-size: 78%;
+  }
+}
+
 html {
   scroll-behavior: smooth;
 }

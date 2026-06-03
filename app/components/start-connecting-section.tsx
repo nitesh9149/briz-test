@@ -14,7 +14,7 @@ function StartConnectingSection({ dict }: Props) {
 
   return (
     <Container>
-      <div className="rounded-4xl bg-[linear-gradient(108deg,#2F7FEF_3.32%,#3A5CCC_101.69%)] p-4 md:py-24 md:px-[76px]">
+      <div className="rounded-4xl bg-[linear-gradient(108deg,#2F7FEF_3.32%,#3A5CCC_101.69%)] p-8 md:py-24 md:px-[76px]">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="space-y-8 order-2 md:order-0">
             <HeadingH2 className="text-on-primary">{t.title}</HeadingH2>
@@ -45,13 +45,14 @@ function StartConnectingSection({ dict }: Props) {
                 </TextDefault>
               </li>
             </ul>
-            <div className="flex items-center gap-4 mt-12">
+            <div className="flex items-center justify-center md:justify-start gap-4 mt-12">
               <Link href={downloadAppLinks.googlePlay}>
                 <Image
                   src="/google-store.png"
                   alt="google store"
                   width={169}
                   height={50}
+                  className="h-12 w-auto md:h-[50px]"
                 />
               </Link>
               <Link href={downloadAppLinks.appStore}>
@@ -60,6 +61,7 @@ function StartConnectingSection({ dict }: Props) {
                   alt="google store"
                   width={149}
                   height={50}
+                  className="h-12 w-auto md:h-[50px]"
                 />
               </Link>
             </div>

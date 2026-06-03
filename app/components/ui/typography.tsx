@@ -8,7 +8,7 @@ function HeadingH1({ as: Tag = "h1", className, ...props }: HeadingProps) {
   return (
     <Tag
       className={cn(
-        "text-[4rem] font-bold tracking-[-0.03em] leading-18",
+        "text-[3.5rem] md:text-[4rem] font-bold tracking-[-0.03em] leading-16 md:leading-18",
         className
       )}
       {...props}

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Container from "./container";
 import Image from "next/image";
-import { TextDefault } from "./ui/typography";
+import { TextDefault, TextMedium } from "./ui/typography";
 import {
   FacebookIcon,
   InstagramIcon,
@@ -127,9 +127,30 @@ function Footer({ dict, lang }: FooterProps) {
       </section>
       <div className="py-6 bg-surface-bright">
         <Container>
-          <TextDefault className="text-center">
-            {t.copyright.replace("{year}", new Date().getFullYear().toString())}
-          </TextDefault>
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+            <TextMedium className="text-on-surface flex items-center gap-3 pt-2">
+              {dict.hero.tagline}{" "}
+              <Link
+                href="https://www.karobarapp.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Image
+                  src="/karobar.png"
+                  alt="Karobar Logo"
+                  width={103}
+                  height={24}
+                  className="inline-block"
+                />
+              </Link>
+            </TextMedium>
+            <TextDefault className="text-center">
+              {t.copyright.replace(
+                "{year}",
+                new Date().getFullYear().toString(),
+              )}
+            </TextDefault>
+          </div>
         </Container>
       </div>
     </>

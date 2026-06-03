@@ -13,7 +13,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "./ui/sheet";
-import { HamburgerIcon, XIcon } from "./icons";
+import { DownloadIcon, HamburgerIcon, XIcon } from "./icons";
 // import SelectGlobalLanguage from "./language-select"; // disabled: English-only for now
 import type { Dictionary, Locale } from "@/app/[lang]/dictionaries";
 import { Dialog, DialogTrigger } from "./ui/dialog";
@@ -44,7 +44,7 @@ function Navbar({ dict, lang }: NavbarProps) {
     <Sheet open={isMenuOpen} onOpenChange={openMenu}>
       <nav
         className={cn(
-          "sticky top-0 left-0 h-[var(--navbar-height)] bg-surface-dim z-[99]",
+          "sticky top-0 left-0 h-(--navbar-height) bg-surface-dim z-99",
           scrolled && "border-b border-outline",
         )}
       >
@@ -81,7 +81,9 @@ function Navbar({ dict, lang }: NavbarProps) {
             {/* <SelectGlobalLanguage dict={dict} lang={lang} /> */}
             <Dialog>
               <DialogTrigger asChild>
-                <Button intent="neutralAccent">{t.downloadApp}</Button>
+                <Button>
+                  <DownloadIcon /> {t.downloadApp}
+                </Button>
               </DialogTrigger>
               <ScanQrToDownloadDialogContent dict={dict} />
             </Dialog>
@@ -171,7 +173,10 @@ function MobileTabMenu({
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Button className="w-full">{t.downloadApp}</Button>
+              <Button className="w-full">
+                {" "}
+                <DownloadIcon /> {t.downloadApp}
+              </Button>
             </Link>
           </div>
         </SheetHeader>

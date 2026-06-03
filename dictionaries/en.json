@@ -7,7 +7,7 @@
     "downloadApp": "Download Briz"
   },
   "hero": {
-    "tagline": "Local shopping reimagined",
+    "tagline": "From the makers of",
     "titlePart1": "Where",
     "titleHighlight": "local",
     "titlePart2": "stores & nearby customers meet",
@@ -27,8 +27,8 @@
     "customerDescription": "You need a product, but don't know which nearby store has that product."
   },
   "howItWorks": {
-    "titlePart1": "Request → Offer → ",
-    "titlePart2": "Chat → Order",
+    "titlePart1": "Request. Offer. ",
+    "titlePart2": "Chat. Order.",
     "description": "Connecting local customers and sellers in real-time.",
     "step": "Step",
     "step1Title": "Tell Briz what you need",
