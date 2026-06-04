@@ -132,7 +132,7 @@ export default async function HomePage({
       {/* Video Section */}
       <Container>
         <div className="relative w-full">
-          <figure className="relative aspect-55/31 w-full overflow-hidden rounded-3xl border-4 md:border-10 border-icon-hover">
+          <figure className="relative aspect-55/31 w-full overflow-hidden rounded-3xl border-3 md:border-5 border-icon-hover shadow-[0px_10px_18px_-2px_#0A090B12]">
             <Image
               src="/video-thumbnail.png"
               alt="Video Thumbnail"
