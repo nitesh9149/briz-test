@@ -142,7 +142,7 @@ export default async function HomePage({
             />
           </figure>
           <Image
-            className="absolute z-10 -top-[27px] md:-top-[80px] -right-[25px] md:-right-[70px] w-[40px] md:w-auto"
+            className="absolute z-10 -top-[35px] md:-top-[105px] -right-[32px] md:-right-[91px] w-[40px] md:w-auto"
             src="/three-yellow-line.png"
             width={68}
             height={114}
