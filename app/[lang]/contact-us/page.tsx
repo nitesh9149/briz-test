@@ -93,9 +93,9 @@ export default async function ContactUsPage({
                 </TextSmall>
                 <a
                   className="text-on-surface-variant font-bold text-lg"
-                  href="tel:9761812176"
+                  href="tel:+9779700022619"
                 >
-                  +977 9761812176
+                  +977 9700022619
                 </a>
               </div>
             </li>
