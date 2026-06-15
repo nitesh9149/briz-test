@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 import { useEffect, useState } from "react";
 import Container from "./container";
 import Link from "next/link";
+import NavLink from "./nav-link";
 import Image from "next/image";
 import { Button } from "./ui/button";
 import {
@@ -56,9 +57,9 @@ function Navbar({ dict, lang }: NavbarProps) {
           </div>
           <ul className="hidden md:flex gap-8 absolute left-1/2 -translate-x-1/2">
             <li>
-              <Link href={home} className="font-medium">
+              <NavLink href={home} className="font-medium">
                 {t.home}
-              </Link>
+              </NavLink>
             </li>
             <li>
               <Link href={howItWorks} className="font-medium">
@@ -72,9 +73,9 @@ function Navbar({ dict, lang }: NavbarProps) {
             </li>
 
             <li>
-              <Link href={contactUs} className="font-medium">
+              <NavLink href={contactUs} className="font-medium">
                 {t.contactUs}
-              </Link>
+              </NavLink>
             </li>
           </ul>
           <div className="hidden md:flex gap-3">
@@ -126,13 +127,13 @@ function MobileTabMenu({
           <SheetTitle className="hidden"></SheetTitle>
           <ul className="space-y-6 mt-8">
             <li>
-              <Link
+              <NavLink
                 onClick={closeMenu}
                 href={home}
                 className="font-medium w-full inline-block"
               >
                 {t.home}
-              </Link>
+              </NavLink>
             </li>
             <li>
               <Link
@@ -153,13 +154,13 @@ function MobileTabMenu({
               </Link>
             </li>
             <li>
-              <Link
+              <NavLink
                 onClick={closeMenu}
                 href={contactUs}
                 className="font-medium w-full inline-block"
               >
                 {t.contactUs}
-              </Link>
+              </NavLink>
             </li>
           </ul>
           <div className="flex flex-col gap-3">

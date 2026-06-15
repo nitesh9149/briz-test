@@ -1,4 +1,5 @@
 import Link from "next/link";
+import NavLink from "./nav-link";
 import Container from "./container";
 import Image from "next/image";
 import { TextDefault, TextMedium } from "./ui/typography";
@@ -67,7 +68,7 @@ function Footer({ dict, lang }: FooterProps) {
               <TextDefault className="font-bold">{t.quickLinks}</TextDefault>
               <ul className="space-y-6">
                 <li>
-                  <Link href={base}>{nav.home}</Link>
+                  <NavLink href={base}>{nav.home}</NavLink>
                 </li>
                 <li>
                   <Link href={`${base}#how-it-works`}>{nav.howItWorks}</Link>
@@ -76,7 +77,7 @@ function Footer({ dict, lang }: FooterProps) {
                   <Link href={`${base}#faqs`}>{nav.faqs}</Link>
                 </li>
                 <li>
-                  <Link href={`${base}/contact-us`}>{nav.contactUs}</Link>
+                  <NavLink href={`${base}/contact-us`}>{nav.contactUs}</NavLink>
                 </li>
               </ul>
             </div>
@@ -84,10 +85,12 @@ function Footer({ dict, lang }: FooterProps) {
               <TextDefault className="font-bold">{t.others}</TextDefault>
               <ul className="space-y-6">
                 <li>
-                  <Link href={`${base}/privacy-policy`}>{t.privacyPolicy}</Link>
+                  <NavLink href={`${base}/privacy-policy`}>
+                    {t.privacyPolicy}
+                  </NavLink>
                 </li>
                 <li>
-                  <Link href={`${base}/terms-of-use`}>{t.termsOfUse}</Link>
+                  <NavLink href={`${base}/terms-of-use`}>{t.termsOfUse}</NavLink>
                 </li>
               </ul>
             </div>
