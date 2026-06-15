@@ -30,9 +30,9 @@ function Footer({ dict, lang }: FooterProps) {
         <Container>
           <div className="py-16 grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 gap-8 md:gap-16">
             <div className="col-span-2 md:max-w-[80%]">
-              <Link href={base}>
+              <NavLink href={base}>
                 <Image src="/logo.png" alt="Logo" width={64} height={28} />
-              </Link>
+              </NavLink>
               <TextDefault className="text-on-surface mt-4">
                 {t.description}
               </TextDefault>
@@ -71,10 +71,12 @@ function Footer({ dict, lang }: FooterProps) {
                   <NavLink href={base}>{nav.home}</NavLink>
                 </li>
                 <li>
-                  <Link href={`${base}#how-it-works`}>{nav.howItWorks}</Link>
+                  <NavLink href={`${base}#how-it-works`}>
+                    {nav.howItWorks}
+                  </NavLink>
                 </li>
                 <li>
-                  <Link href={`${base}#faqs`}>{nav.faqs}</Link>
+                  <NavLink href={`${base}#faqs`}>{nav.faqs}</NavLink>
                 </li>
                 <li>
                   <NavLink href={`${base}/contact-us`}>{nav.contactUs}</NavLink>

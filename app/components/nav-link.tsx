@@ -7,29 +7,48 @@ import type { ComponentProps, MouseEvent } from "react";
 type NavLinkProps = ComponentProps<typeof Link>;
 
 /**
- * Drop-in replacement for next/link that scrolls to the top of the page when
- * the user clicks it while already on the destination route. Next.js does
- * nothing in that case (no navigation occurs), so without this a "Home" click
- * from the bottom of the home page would leave the user where they are.
+ * Drop-in replacement for next/link that fixes two same-page navigation gaps
+ * that plain <Link> leaves:
  *
- * In-page hash links (e.g. "#faqs") are left untouched so anchor scrolling
- * keeps working.
+ *  1. Clicking a link to the route you're already on (e.g. "Home" from the
+ *     bottom of the home page) is a no-op in Next.js — here it smooth-scrolls
+ *     to the top.
+ *  2. Clicking an in-page hash link (e.g. "How it works") when that hash is
+ *     already in the URL is also a no-op — here it re-scrolls to the section
+ *     every time.
+ *
+ * It handles these by scrolling manually rather than relying on the router's
+ * URL diffing, so behaviour is consistent no matter what the current hash is.
  */
 export default function NavLink({ href, onClick, ...props }: NavLinkProps) {
   const pathname = usePathname();
 
   function handleClick(event: MouseEvent<HTMLAnchorElement>) {
     const hrefStr = typeof href === "string" ? href : "";
-    const isHashLink = hrefStr.includes("#");
+    if (hrefStr) {
+      const [path, hash] = hrefStr.split("#");
+      const samePage = path === "" || path === pathname;
 
-    if (!isHashLink && hrefStr && pathname === hrefStr) {
-      event.preventDefault();
-      // Drop any lingering hash (e.g. "#how-it-works") so the URL reflects
-      // the top of the page.
-      if (window.location.hash) {
-        window.history.replaceState(null, "", hrefStr);
+      if (samePage) {
+        if (hash) {
+          // In-page anchor: scroll to the section ourselves so repeat clicks
+          // (when the hash is already in the URL) still work.
+          const el = document.getElementById(hash);
+          if (el) {
+            event.preventDefault();
+            el.scrollIntoView({ behavior: "smooth" });
+            window.history.replaceState(null, "", hrefStr);
+          }
+        } else {
+          // Plain route link to the current page: scroll to top and drop any
+          // lingering hash so the URL reflects it.
+          event.preventDefault();
+          if (window.location.hash) {
+            window.history.replaceState(null, "", hrefStr);
+          }
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
       }
-      window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
     onClick?.(event);

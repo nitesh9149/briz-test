@@ -51,9 +51,9 @@ function Navbar({ dict, lang }: NavbarProps) {
       >
         <Container className="relative flex items-center justify-between h-full">
           <div className="lg:w-fit">
-            <Link href={home} className="w-fit inline-block">
+            <NavLink href={home} className="w-fit inline-block">
               <Image src="/logo.png" alt="Logo" width={64} height={28} />
-            </Link>
+            </NavLink>
           </div>
           <ul className="hidden md:flex gap-8 absolute left-1/2 -translate-x-1/2">
             <li>
@@ -62,14 +62,14 @@ function Navbar({ dict, lang }: NavbarProps) {
               </NavLink>
             </li>
             <li>
-              <Link href={howItWorks} className="font-medium">
+              <NavLink href={howItWorks} className="font-medium">
                 {t.howItWorks}
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link href={faqs} className="font-medium">
+              <NavLink href={faqs} className="font-medium">
                 {t.faqs}
-              </Link>
+              </NavLink>
             </li>
 
             <li>
@@ -136,22 +136,22 @@ function MobileTabMenu({
               </NavLink>
             </li>
             <li>
-              <Link
+              <NavLink
                 onClick={closeMenu}
                 href={howItWorks}
                 className="font-medium w-full inline-block"
               >
                 {t.howItWorks}
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link
+              <NavLink
                 onClick={closeMenu}
                 href={faqs}
                 className="font-medium w-full inline-block"
               >
                 {t.faqs}
-              </Link>
+              </NavLink>
             </li>
             <li>
               <NavLink
