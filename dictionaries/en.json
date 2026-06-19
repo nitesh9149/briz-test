@@ -187,8 +187,8 @@
     "content": "<p>At <strong>Briz</strong>, we respect your privacy and your right to control your personal data. You may request the permanent deletion of your Briz account and associated personal information at any time.</p><h3>Option 1: Delete your account from the app (Recommended)</h3><ol><li>Open the Briz app.</li><li>Go to <strong>Profile → My Account</strong>.</li><li>Tap <strong>Delete Your Account</strong> under the <strong>Danger Area</strong> section.</li><li>Follow the on-screen instructions to confirm your request.</li></ol><h3>Option 2: Request deletion through this page</h3><p>If you no longer have access to the app, send an email to <a href=\"mailto:contact@brizmarket.com\">contact@brizmarket.com</a> with:</p><ul><li>Subject: <strong>Delete My Briz Account</strong></li><li>Your registered phone number or email address</li><li>Your full name (optional, for verification)</li></ul><p>Our team will process your request after verifying your identity.</p><h2>What happens when your account is deleted?</h2><p>When your deletion request is completed:</p><ul><li>Your Briz account will be permanently deleted.</li><li>Your profile information and associated personal data will be removed from our systems, except where retention is required by applicable laws or for fraud prevention, dispute resolution, or legal compliance.</li><li>This action cannot be undone.</li></ul><h2>Processing Time</h2><p>We aim to process verified deletion requests within <strong>7 business days</strong>.</p><h2>Need Help?</h2><p>If you have any questions regarding account deletion or your data, please contact:</p><p><strong>Email:</strong> <a href=\"mailto:contact@brizmarket.com\">contact@brizmarket.com</a></p>"
   },
   "downloadLinks": {
-    "googlePlay": "",
-    "appStore": "",
+    "googlePlay": "http://play.google.com/store/apps/details?id=com.bytecaretech.briz",
+    "appStore": "https://apps.apple.com/us/app/briz-shop-locally/id6781150712",
     "downloadLink": "https://qwik.one/briz"
   },
   "languageSelect": {

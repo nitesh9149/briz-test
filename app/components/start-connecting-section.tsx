@@ -46,7 +46,7 @@ function StartConnectingSection({ dict }: Props) {
               </li>
             </ul>
             <div className="flex items-center justify-center md:justify-start gap-4 mt-12">
-              <Link href={downloadAppLinks.googlePlay}>
+              <Link href={downloadAppLinks.googlePlay} target="_blank" rel="noopener noreferrer">
                 <Image
                   src="/google-store.png"
                   alt="google store"
@@ -55,7 +55,7 @@ function StartConnectingSection({ dict }: Props) {
                   className="h-12 w-auto md:h-[50px]"
                 />
               </Link>
-              <Link href={downloadAppLinks.appStore}>
+              <Link href={downloadAppLinks.appStore} target="_blank" rel="noopener noreferrer">
                 <Image
                   src="/apple-store.png"
                   alt="google store"

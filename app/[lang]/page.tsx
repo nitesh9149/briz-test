@@ -107,7 +107,7 @@ export default async function HomePage({
           </TextLarge>
 
           <div className="flex items-center justify-center md:justify-start gap-4 mt-4">
-            <Link href={downloadAppLink.googlePlay}>
+            <Link href={downloadAppLink.googlePlay} target="_blank" rel="noopener noreferrer">
               <Image
                 src="/google-store.png"
                 alt="google store"
@@ -116,7 +116,7 @@ export default async function HomePage({
                 className="h-12 w-auto md:h-[50px]"
               />
             </Link>
-            <Link href={downloadAppLink.appStore}>
+            <Link href={downloadAppLink.appStore} target="_blank" rel="noopener noreferrer">
               <Image
                 src="/apple-store.png"
                 alt="google store"

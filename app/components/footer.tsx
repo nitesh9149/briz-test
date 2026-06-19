@@ -102,7 +102,7 @@ function Footer({ dict, lang }: FooterProps) {
               </TextDefault>
               <ul className="space-y-6">
                 <li>
-                  <Link href={downloadAppLinks.googlePlay}>
+                  <Link href={downloadAppLinks.googlePlay} target="_blank" rel="noopener noreferrer">
                     <figure className="relative w-[140px] md:w-[163px] aspect-27/8">
                       <Image
                         src="/google-store.png"
@@ -114,7 +114,7 @@ function Footer({ dict, lang }: FooterProps) {
                   </Link>
                 </li>
                 <li>
-                  <Link href={downloadAppLinks.appStore}>
+                  <Link href={downloadAppLinks.appStore} target="_blank" rel="noopener noreferrer">
                     <figure className="relative w-[140px] md:w-[163px] aspect-149/50">
                       <Image
                         src="/apple-store.png"
