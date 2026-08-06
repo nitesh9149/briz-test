@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { getSiteOrigin } from "@/lib/site-url";
 import "./globals.css";
-import Navbar from "./components/navbar";
-import Footer from "./components/footer";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -10,9 +9,15 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(getSiteOrigin()),
   title: {
-    default: "MyShop Landing",
-    template: `%s | MyShop`,
+    default: "Briz",
+    template: `%s | Briz`,
+  },
+  icons: {
+    icon: "/favicon.png",
+    shortcut: "/favicon.png",
+    apple: "/favicon.png",
   },
 };
 
@@ -22,11 +27,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html suppressHydrationWarning data-scroll-behavior="smooth">
       <body className={`antialiased ${inter.className} bg-surface-dim`}>
-        <Navbar />
         {children}
-        <Footer />
       </body>
     </html>
   );

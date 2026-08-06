@@ -1,7 +1,8 @@
 import Link from "next/link";
+import NavLink from "./nav-link";
 import Container from "./container";
 import Image from "next/image";
-import { TextDefault } from "./ui/typography";
+import { TextDefault, TextMedium } from "./ui/typography";
 import {
   FacebookIcon,
   InstagramIcon,
@@ -9,83 +10,100 @@ import {
   TiktokIcon,
   YoutubeIcon,
 } from "./icons";
+import type { Dictionary, Locale } from "@/app/[lang]/dictionaries";
 
-function Footer() {
+type FooterProps = {
+  dict: Dictionary;
+  lang: Locale;
+};
+
+function Footer({ dict, lang }: FooterProps) {
+  const t = dict.footer;
+  const nav = dict.nav;
+  const base = `/${lang}`;
+
+  const downloadAppLinks = dict.downloadLinks;
+
   return (
     <>
       <section className="bg-surface-bright border-y border-outline">
         <Container>
           <div className="py-16 grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 gap-8 md:gap-16">
             <div className="col-span-2 md:max-w-[80%]">
-              <Link href="/">
-                <Image src="/logo.png" alt="Logo" width={108} height={36} />
-              </Link>
+              <NavLink href={base}>
+                <Image src="/logo.png" alt="Logo" width={64} height={28} />
+              </NavLink>
               <TextDefault className="text-on-surface mt-4">
-                A local marketplace connecting customers and sellers in real
-                time — request, chat, and shop instantly.
+                {t.description}
               </TextDefault>
               <ul className="flex items-center gap-6 mt-6">
                 <li>
-                  <a href="#" aria-label="Facebook">
+                  <a href={t.facebookLink} aria-label="Facebook">
                     <FacebookIcon />
                   </a>
                 </li>
                 <li>
-                  <a href="#" aria-label="Instagram">
+                  <a href={t.instagramLink} aria-label="Instagram">
                     <InstagramIcon />
                   </a>
                 </li>
                 <li>
-                  <a href="#" aria-label="TikTok">
+                  <a href={t.tiktokLink} aria-label="TikTok">
                     <TiktokIcon />
                   </a>
                 </li>
                 <li>
-                  <a href="#" aria-label="YouTube">
+                  <a href={t.youtubeLink} aria-label="YouTube">
                     <YoutubeIcon />
                   </a>
                 </li>
-                <li>
-                  <a href="#" aria-label="LinkedIn">
+                {/* <li>
+                  <a href={t.linkedinLink} aria-label="LinkedIn">
                     <LinkedinIcon />
                   </a>
+                </li> */}
+              </ul>
+            </div>
+            <div className="space-y-6">
+              <TextDefault className="font-bold">{t.quickLinks}</TextDefault>
+              <ul className="space-y-6">
+                <li>
+                  <NavLink href={base}>{nav.home}</NavLink>
+                </li>
+                <li>
+                  <NavLink href={`${base}#how-it-works`}>
+                    {nav.howItWorks}
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink href={`${base}#faqs`}>{nav.faqs}</NavLink>
+                </li>
+                <li>
+                  <NavLink href={`${base}/contact-us`}>{nav.contactUs}</NavLink>
                 </li>
               </ul>
             </div>
             <div className="space-y-6">
-              <TextDefault className="font-bold">Quick Links</TextDefault>
+              <TextDefault className="font-bold">{t.others}</TextDefault>
               <ul className="space-y-6">
                 <li>
-                  <Link href="#">Home</Link>
+                  <NavLink href={`${base}/privacy-policy`}>
+                    {t.privacyPolicy}
+                  </NavLink>
                 </li>
                 <li>
-                  <Link href="/#how-it-works">How it Works</Link>
-                </li>
-                <li>
-                  <Link href="/#faqs">FAQs</Link>
-                </li>
-                <li>
-                  <Link href="/contact-us">Contact Us</Link>
+                  <NavLink href={`${base}/terms-of-use`}>{t.termsOfUse}</NavLink>
                 </li>
               </ul>
             </div>
             <div className="space-y-6">
-              <TextDefault className="font-bold">Others</TextDefault>
+              <TextDefault className="font-bold">
+                {t.downloadAppNow}
+              </TextDefault>
               <ul className="space-y-6">
                 <li>
-                  <Link href="/terms-of-use">Terms of Use</Link>
-                </li>
-                <li>
-                  <Link href="/privacy-policy">Privacy Policy</Link>
-                </li>
-              </ul>
-            </div>
-            <div className="space-y-6">
-              <TextDefault className="font-bold">Download App Now</TextDefault>
-              <ul className="space-y-6">
-                <li>
-                  <Link href="/">
-                    <figure className="relative w-[163px] h-12">
+                  <Link href={downloadAppLinks.googlePlay} target="_blank" rel="noopener noreferrer">
+                    <figure className="relative w-[140px] md:w-[163px] aspect-27/8">
                       <Image
                         src="/google-store.png"
                         alt="google store"
@@ -96,11 +114,11 @@ function Footer() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/">
-                    <figure className="relative w-[163px] h-12">
+                  <Link href={downloadAppLinks.appStore} target="_blank" rel="noopener noreferrer">
+                    <figure className="relative w-[140px] md:w-[163px] aspect-149/50">
                       <Image
                         src="/apple-store.png"
-                        alt="google store"
+                        alt="apple store"
                         fill
                         className="object-cover rounded-lg"
                       />
@@ -114,9 +132,30 @@ function Footer() {
       </section>
       <div className="py-6 bg-surface-bright">
         <Container>
-          <TextDefault className="text-center">
-            © 2025 myShop. All rights reserved.
-          </TextDefault>
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+            <TextMedium className="text-on-surface flex items-center gap-3 pt-2">
+              {dict.hero.tagline}{" "}
+              <Link
+                href="https://www.karobarapp.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Image
+                  src="/karobar.png"
+                  alt="Karobar Logo"
+                  width={103}
+                  height={24}
+                  className="inline-block"
+                />
+              </Link>
+            </TextMedium>
+            <TextDefault className="text-center">
+              {t.copyright.replace(
+                "{year}",
+                new Date().getFullYear().toString(),
+              )}
+            </TextDefault>
+          </div>
         </Container>
       </div>
     </>

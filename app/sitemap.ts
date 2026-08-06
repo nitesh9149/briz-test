@@ -1,23 +1,30 @@
 import type { MetadataRoute } from "next";
+import { getSiteOrigin } from "@/lib/site-url";
+import { defaultLocale } from "@/app/[lang]/i18n-config";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const origin = process.env.NEXT_PUBLIC_APP_URL;
+  const base = `${getSiteOrigin()}/${defaultLocale}`;
+  const lastModified = new Date().toISOString();
+
   return [
+    { url: base, lastModified, changeFrequency: "daily", priority: 1 },
     {
-      url: `${origin}`,
-      lastModified: new Date(),
+      url: `${base}/contact-us`,
+      lastModified,
+      changeFrequency: "weekly",
+      priority: 0.8,
     },
     {
-      url: `${origin}/contact-us`,
-      lastModified: new Date(),
+      url: `${base}/privacy-policy`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.5,
     },
     {
-      url: `${origin}/privacy-policy`,
-      lastModified: new Date(),
-    },
-    {
-      url: `${origin}/terms-of-use`,
-      lastModified: new Date(),
+      url: `${base}/terms-of-use`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.5,
     },
   ];
 }
