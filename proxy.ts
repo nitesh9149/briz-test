@@ -10,17 +10,39 @@ function getLocale(request: NextRequest): string {
   return matched && hasLocale(matched) ? matched : defaultLocale;
 }
 
+function getCity(request: NextRequest): string | null {
+  const raw = request.headers.get("x-vercel-ip-city");
+  if (!raw) return null;
+  // Vercel percent-encodes the header value (e.g. "San%20Francisco").
+  try {
+    return decodeURIComponent(raw);
+  } catch {
+    return raw;
+  }
+}
+
 export function proxy(request: NextRequest) {
-  const { pathname } = request.nextUrl;
+  const { pathname, searchParams } = request.nextUrl;
+  const city = getCity(request);
+  console.log(`Request received for city: ${city}, pathname: ${pathname}`);
   const pathnameHasLocale = locales.some(
     (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
   );
 
-  if (pathnameHasLocale) return;
+  // Only redirect when the city param is missing or stale, otherwise every
+  // request would bounce forever.
+  const needsCityParam = city !== null && searchParams.get("city") !== city;
 
-  const locale = getLocale(request);
-  request.nextUrl.pathname = `/${locale}${pathname}`;
-  return NextResponse.redirect(request.nextUrl);
+  if (pathnameHasLocale && !needsCityParam) return;
+
+  const url = request.nextUrl.clone();
+  if (!pathnameHasLocale) {
+    url.pathname = `/${getLocale(request)}${pathname}`;
+  }
+  if (city !== null) {
+    url.searchParams.set("city", city);
+  }
+  return NextResponse.redirect(url);
 }
 
 export const config = {
