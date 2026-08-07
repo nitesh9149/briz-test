@@ -1,7 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  // Reads GeoNames dumps off disk at runtime — must not be bundled.
+  serverExternalPackages: ["local-reverse-geocoder"],
 };
 
 export default nextConfig;
